@@ -1,0 +1,7 @@
+openapi: 3.0.1
+info:
+  title: 学生API
+  description: 学生api文档
+  contact:
+    email: 13928121916@163.com
+  version: "1.1"

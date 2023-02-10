@@ -1,0 +1,71 @@
+openapi: 3.0.1
+info:
+  title: 学生API
+  description: 学生api文档
+  contact:
+    email: 13928121916@163.com
+  version: "1.1"
+paths:
+  /students/getStudentById/{student_id}:
+    get:
+      tags:
+      - students
+      summary: 根据id查询学生信息
+      operationId: getStudentById
+      parameters:
+      - name: student_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: 查询成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentDTO'
+        "404":
+          description: 学生不存在
+  /students/listStudents:
+    get:
+      tags:
+      - students
+      summary: 查询学生列表
+      operationId: listStudents
+      parameters:
+      - name: pageNo
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: name
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: 查询成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentDTO'
+components:
+  schemas:
+    StudentDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        age:
+          type: integer
+          format: int32
